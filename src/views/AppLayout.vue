@@ -6,7 +6,8 @@
                 <span v-show="!isCollapse">未来出行星座测运控系统</span>
             </div>
             <div class="meun_area">
-                <el-menu background-color="#033864" text-color="#fff" active-text-color="#ffd04b" :collapse="isCollapse" class="el-menu-vertical" :default-active="$route.path" :unique-opened="true">
+                <el-menu background-color="#033864" text-color="#fff" active-text-color="#ffd04b" :collapse="isCollapse"
+                    class="el-menu-vertical" :default-active="$route.path" :unique-opened="true" @select="handleMenuSelect">
                     <template v-for="(item, index) in menuData" :key="index">
                         <el-sub-menu v-if="item.subMenu" :index="item.index">
                             <template #title>
@@ -22,7 +23,7 @@
                             <el-icon>
                                 <House />
                             </el-icon>
-                            {{ item.title }}
+                            <template #title>{{ item.title }}</template>
                         </el-menu-item>
                     </template>
                 </el-menu>
@@ -30,7 +31,8 @@
         </el-aside>
         <el-container>
             <el-header class="page_header">
-                <el-icon class="fold_icon" :size="26" color="#ffffff" @click="isCollapse = !isCollapse" :class="isCollapse ? 'fold_icon_rotate' : ''">
+                <el-icon class="fold_icon" :size="26" color="#ffffff" @click="isCollapse = !isCollapse"
+                    :class="isCollapse ? 'fold_icon_rotate' : ''">
                     <fold />
                 </el-icon>
             </el-header>
@@ -44,6 +46,7 @@
 <script>
 
 
+
 /* eslint-disable */
 import "./AppLayout.scss";
 
@@ -55,26 +58,32 @@ export default {
             menuData: [
                 {
                     title: "用户管理",
-                    index: "userManage",
+                    index: "userCenter",
                     subMenu: [
                         {
                             title: "权限管理",
-                            index: "authorize",
+                            index: "userManage",
                         },
                     ],
                 },
                 {
                     title: "角色管理",
-                    index: "roleManage",
+                    index: "roleCenter/roleManage",
                 },
             ],
         };
     },
 
     methods: {
+        // 回到主页
         redirectHome() {
             this.$router.push("/");
         },
+
+
+        handleMenuSelect(e) {
+            this.$router.push(e);
+        }
     },
 };
 </script>

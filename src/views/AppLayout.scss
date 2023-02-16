@@ -76,6 +76,10 @@
     padding-left: 55px !important;
 }
 
+.el-menu-item.is-active {
+    background-color: #0455AF;
+}
+
 // chrome 滚动条
 ::-webkit-scrollbar {
     width: 6px;
