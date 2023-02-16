@@ -32,9 +32,19 @@
         <el-container>
             <el-header class="page_header">
                 <el-icon class="fold_icon" :size="26" color="#ffffff" @click="isCollapse = !isCollapse"
-                    :class="isCollapse ? 'fold_icon_rotate' : ''">
+                    :class="{ 'fold_icon_rotate': isCollapse }">
                     <fold />
                 </el-icon>
+                <div class="page_header_info">
+                    <div class="page_header_info_button">
+                        <el-avatar icon="UserFilled" :size="28">user</el-avatar>
+                        <span style="padding-left: 4px;"> admin</span>
+                    </div>
+                    <div class="page_header_info_button">
+                        <el-icon :size="24"><SwitchButton /></el-icon>
+                        <span>退出登陆</span>
+                    </div>
+                </div>
             </el-header>
             <el-main style="padding: 0">
                 <router-view></router-view>
@@ -44,8 +54,6 @@
 </template>
 
 <script>
-
-
 
 /* eslint-disable */
 import "./AppLayout.scss";

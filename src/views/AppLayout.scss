@@ -45,7 +45,8 @@
 .page_header {
     background-color: #033864;
     position: relative;
-
+    color: #fff;
+    font-size: 14px;
     .fold_icon {
         position: absolute;
         left: 10px;
@@ -54,10 +55,29 @@
         margin: auto;
         cursor: pointer;
         transition: all 0.3s;
+        z-index: 999;
     }
 
     .fold_icon_rotate {
         transform: rotate(180deg);
+    }
+
+    .page_header_info {
+        height: 100%;
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        .page_header_info_button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: all 0.2s; 
+        }
+        .page_header_info_button:hover {
+            transform: scale(0.95);
+        }
     }
 }
 
