@@ -5,7 +5,7 @@
                 <img src="../assets/logo.png" style="width: 32px; height: 32px" />
                 <h1 v-show="!isCollapse">manage system</h1>
             </div>
-            <div class="meun_area">
+            <div class="menu_area">
                 <el-menu background-color="#033864" text-color="#fff" active-text-color="#ffd04b" :collapse="isCollapse"
                     class="el-menu-vertical" :default-active="$route.path" :unique-opened="true" router>
                     <el-menu-item index="/userCenter/userManage">
