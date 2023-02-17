@@ -2,49 +2,32 @@
     <el-container class="page_container">
         <el-aside class="page_aside">
             <div class="logo_area" @click="redirectHome">
-                <img src="../assets/logo.png" style="width: 32px; height: 32px" alt />
-                <span v-show="!isCollapse">未来出行星座测运控系统</span>
+                <img src="../assets/logo.png" style="width: 32px; height: 32px" />
+                <h1 v-show="!isCollapse">manage system</h1>
             </div>
             <div class="meun_area">
                 <el-menu background-color="#033864" text-color="#fff" active-text-color="#ffd04b" :collapse="isCollapse"
-                    class="el-menu-vertical" :default-active="$route.path" :unique-opened="true" @select="handleMenuSelect">
-                    <template v-for="(item, index) in menuData" :key="index">
-                        <el-sub-menu v-if="item.subMenu" :index="item.index">
-                            <template #title>
-                                <el-icon>
-                                    <location />
-                                </el-icon>
-                                <span>{{ item.title }}</span>
-                            </template>
-                            <el-menu-item v-for="subItem in item.subMenu" :index="`/${item.index}/${subItem.index}`"
-                                :key="subItem.index">{{ subItem.title }}</el-menu-item>
-                        </el-sub-menu>
-                        <el-menu-item v-else :index="`/${item.index}`">
-                            <el-icon>
-                                <House />
-                            </el-icon>
-                            <template #title>{{ item.title }}</template>
-                        </el-menu-item>
-                    </template>
+                    class="el-menu-vertical" :default-active="$route.path" :unique-opened="true" router>
+                    <el-menu-item index="/userCenter/userManage">
+                        <el-icon>
+                            <document />
+                        </el-icon>
+                        <span>user manage</span>
+                    </el-menu-item>
+                    <el-menu-item index="/roleCenter/roleManage">
+                        <el-icon>
+                            <setting />
+                        </el-icon>
+                        <span>role manage1</span>
+                    </el-menu-item>
                 </el-menu>
             </div>
         </el-aside>
         <el-container>
             <el-header class="page_header">
-                <el-icon class="fold_icon" :size="26" color="#ffffff" @click="isCollapse = !isCollapse"
-                    :class="{ 'fold_icon_rotate': isCollapse }">
+                <el-icon class="fold_icon" :size="26" color="#ffffff" @click="isCollapse = !isCollapse" :class="{ 'fold_icon_rotate': isCollapse }">
                     <fold />
                 </el-icon>
-                <div class="page_header_info">
-                    <div class="page_header_info_button">
-                        <el-avatar icon="UserFilled" :size="28">user</el-avatar>
-                        <span style="padding-left: 4px;"> admin</span>
-                    </div>
-                    <div class="page_header_info_button">
-                        <el-icon :size="24"><SwitchButton /></el-icon>
-                        <span>退出登陆</span>
-                    </div>
-                </div>
             </el-header>
             <el-main style="padding: 0">
                 <router-view></router-view>
@@ -62,28 +45,11 @@ export default {
     name: "AppLayout",
     data() {
         return {
-            isCollapse: window.screen.width <= 1440 ? true : false,
-            menuData: [
-                {
-                    title: "用户管理",
-                    index: "userCenter",
-                    subMenu: [
-                        {
-                            title: "权限管理",
-                            index: "userManage",
-                        },
-                    ],
-                },
-                {
-                    title: "角色管理",
-                    index: "roleCenter/roleManage",
-                },
-            ],
+            isCollapse: false,
         };
     },
 
     methods: {
-        // 回到主页
         redirectHome() {
             this.$router.push("/");
         },
@@ -92,6 +58,6 @@ export default {
         handleMenuSelect(e) {
             this.$router.push(e);
         }
-    },
+    }
 };
 </script>

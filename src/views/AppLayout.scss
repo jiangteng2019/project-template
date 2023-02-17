@@ -25,10 +25,11 @@
             background-color: #eee;
         }
 
-        >span {
+        >h1 {
             position: absolute;
             left: 50px;
             white-space: nowrap;
+            margin: 0;
         }
     }
 
@@ -36,9 +37,6 @@
         height: calc(100% - 60px);
         position: relative;
 
-        .update_log:hover {
-            text-decoration: underline;
-        }
     }
 }
 
@@ -81,38 +79,13 @@
     }
 }
 
-// 解决一像素问题
+
 .el-menu {
     border-right: none !important;
 }
 
-// 菜单自适应
+
 .el-menu-vertical:not(.el-menu--collapse) {
     width: 260px;
     min-height: 400px;
-}
-
-.el-sub-menu .el-menu-item {
-    padding-left: 55px !important;
-}
-
-.el-menu-item.is-active {
-    background-color: #0455AF;
-}
-
-// chrome 滚动条
-::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-}
-
-::-webkit-scrollbar-track {
-    border-radius: 10px;
-}
-
-// 滚动条样式
-::-webkit-scrollbar-thumb {
-    background-color: #0003;
-    border-radius: 10px;
-    transition: all .2s ease-in-out;
 }
